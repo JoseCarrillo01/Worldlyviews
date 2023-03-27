@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 body {
 }
 
@@ -44,4 +45,46 @@ code {
 .gridname{
   display: grid;
   gap: 10px;
+  max-width: 80rem;
+  justify-content: center;
+  align-items:center;
+}
+
+.contentpresent{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); 
+   max-width: 80rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin: 50px auto;
+  place-items: center
+
+}
+
+
+.contentpresent p , .textinicio{
+  font-size: 1.5rem;
+  letter-spacing: 1.3px; 
+  font-family: 'Open Sans', sans-serif;
+}
+
+.contentpresent img{
+  border-radius: 16px;
+  width: 30rem;
+}
+
+
+.tittle{
+
+  margin: 52px 81px;
+place-items: center;
+font-size: 60px;
+display: flex;
+align-items: center;
+justify-content: left;
+font-family: 'Koulen', cursive;
+color: #797979;
+
 }
