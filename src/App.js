@@ -1,7 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import { getPexelsPhotos } from './pexels';
+
+
+
+
 
 function App() {
+
+  const [photos, setPhotos] = useState([]);
+  useEffect(() => {
+    const loadPhotos = async () => {
+      const results = await getPexelsPhotos('landscape');
+      setPhotos(results);
+    };
+    loadPhotos();
+  }, []);
+
   return (
     <div className="App">
       <div class="colorback">
@@ -17,6 +33,10 @@ function App() {
               </defs>
             </svg>
           </div>
+          <header>
+          <img src="/Diseño sin título (1)_preview_rev_1.png"/>
+          <h2> Worldly Views</h2> 
+        </header>
           <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 headersize">
 
             <div class="text-center">
@@ -54,17 +74,17 @@ function App() {
       <div className='contentpresent'>
       <img src='https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg?auto=compress&cs=tinysrgb&w=600' />
 
-      <p>¡Hola! Bienvenido/a a nuestra página web. Somos una plataforma que busca ofrecer una amplia variedad de recursos visuales de alta calidad para que puedas utilizar en tus proyectos personales o comerciales. Nuestro objetivo es brindarte una experiencia agradable y satisfactoria al momento de buscar y descargar los recursos que necesites.</p>
+      <p class="font-serif">¡Hola! Bienvenido/a a nuestra página web. Somos una plataforma que busca ofrecer una amplia variedad de recursos visuales de alta calidad para que puedas utilizar en tus proyectos personales o comerciales. Nuestro objetivo es brindarte una experiencia agradable y satisfactoria al momento de buscar y descargar los recursos que necesites.</p>
       </div>
 
       <div className='contentpresent'>
-      <p>En nuestra página encontrarás una gran cantidad de fotografías, videos y música, todos ellos seleccionados cuidadosamente por nuestro equipo de expertos para asegurarnos de que cumplan con los más altos estándares de calidad. Además, nuestro sitio web cuenta con una interfaz fácil de usar y un motor de búsqueda eficiente que te permitirá encontrar rápidamente lo que necesitas.</p>
+      <p class="font-serif">En nuestra página encontrarás una gran cantidad de fotografías, videos y música, todos ellos seleccionados cuidadosamente por nuestro equipo de expertos para asegurarnos de que cumplan con los más altos estándares de calidad. Además, nuestro sitio web cuenta con una interfaz fácil de usar y un motor de búsqueda eficiente que te permitirá encontrar rápidamente lo que necesitas.</p>
       <img src='https://images.pexels.com/photos/296649/pexels-photo-296649.jpeg?auto=compress&cs=tinysrgb&w=600' />
       </div>
 
       <div className='contentpresent'>
       <img src='https://images.pexels.com/photos/3228833/pexels-photo-3228833.jpeg?auto=compress&cs=tinysrgb&w=600' />
-      <p>Sabemos lo importante que es contar con recursos visuales impactantes y de alta calidad para darle vida a tus proyectos. Ya sea que estés creando un sitio web, un proyecto escolar, una presentación de negocios, o cualquier otra cosa, estamos seguros de que encontrarás en nuestra plataforma el recurso visual que necesitas para hacer que tu proyecto destaque.</p>
+      <p >Sabemos lo importante que es contar con recursos visuales impactantes y de alta calidad para darle vida a tus proyectos. Ya sea que estés creando un sitio web, un proyecto escolar, una presentación de negocios, o cualquier otra cosa, estamos seguros de que encontrarás en nuestra plataforma el recurso visual que necesitas para hacer que tu proyecto destaque.</p>
       </div> <br/><br/>
       <p className='textinicio' >En resumen, estamos comprometidos con ofrecerte una experiencia de usuario excepcional <br/> y brindarte acceso a recursos visuales de alta calidad para que puedas llevar tus proyectos al siguiente nivel. <br/> Esperamos que disfrutes de nuestra plataforma y que encuentres lo que necesitas para hacer realidad tus ideas. ¡Gracias por visitarnos!</p>
 
@@ -245,6 +265,17 @@ function App() {
             </div>
           </div>
         </div>
+
+
+
+
+
+        <div className='contentAPIPexels'>
+      {photos.map((photo) => (
+        <img key={photo.id} className="photo" src={photo.src.medium} alt={photo.url} />
+      ))}
+    </div>
+
 
 
 
