@@ -70,7 +70,8 @@ function App() {
 
       <h1 className='tittle'>Worldly Views</h1>  
 
-      <div > 
+      <div className='contenedor' > 
+      
       <div className='contentpresent'>
       <img src='https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg?auto=compress&cs=tinysrgb&w=600' />
 
@@ -260,6 +261,8 @@ function App() {
 
               <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                 <img src="https://images.pexels.com/photos/11511728/pexels-photo-11511728.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75" />
+                <img src="https://images.pexels.com/photos/11511728/pexels-photo-11511728.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75" />
+
               </div>
 
             </div>

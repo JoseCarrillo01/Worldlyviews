@@ -52,17 +52,28 @@ code {
   align-items:center;
 }
 
+
 .contentpresent{
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); 
-   max-width: 80rem;
+  grid-template-columns: 30% 30%; 
+   max-width: 100%;
   text-align: center;
   justify-content: center;
   align-items: center;
   gap: 60px;
-  margin: 50px auto;
-  place-items: center
+  margin: 50px 10px;
+  place-items: center;
 
+}
+
+@media only screen and (max-width:768px) {
+
+
+.contentpresent , .textinicio{
+  grid-template-columns: 1fr; 
+  margin: 5rem 30px;
+  gap: 10px;
+}
 }
 
 
@@ -120,6 +131,7 @@ path{
 
 
 /*API PEXELS*/
+
 .contentAPIPexels{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr)); 
