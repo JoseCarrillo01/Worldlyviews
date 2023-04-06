@@ -131,24 +131,13 @@ path{
 
 
 /*API PEXELS*/
-
-.contentAPIPexels{
+.app .photos {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)); 
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  margin: 0 20px;
-  place-items: center;
-  
 }
 
-
-
-.photo {
-
+.app .photos img {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
-  image-rendering: pixelated;
-
-
+  height: auto;
 }
