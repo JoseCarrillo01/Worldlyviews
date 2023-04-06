@@ -76,12 +76,16 @@ function App() {
 
       </div>
 
+      <h1 className='tittleContentPresent'>Puedes encontrar gran variedad de imagenes como:</h1>
 
 
 
 
 
 
+      <div className="app">
+      <Gallery />
+    </div>
 
 
 
@@ -120,9 +124,12 @@ function App() {
 
 
       <div class="contentPerson">
+        
    
 
         <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 shadow-xl bg-white rounded-lg backgroundfondo">
+        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">We have a wide variety of photos of people</h1>
+
           <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 contentimage">
             <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
               <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600
@@ -167,7 +174,11 @@ function App() {
 
 
         <div class="contenteat">
+          
           <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 shadow-xl bg-white rounded-lg  backgroundfondo">
+          <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">As well as a wide variety of dishes</h1>
+
+
 
             <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 contentimage">
 
@@ -214,6 +225,7 @@ function App() {
 
         <div class="contentcity item-2">
           <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 shadow-xl bg-white rounded-lg backgroundfondo">
+          <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Even images of landscapes our stock has a wide variety of photos without copyrights</h1>
 
             <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 contentimage">
               <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
@@ -259,9 +271,7 @@ function App() {
       </div>
 
 
-      <div className="app">
-      <Gallery />
-    </div>
+ 
    
 
     </div>

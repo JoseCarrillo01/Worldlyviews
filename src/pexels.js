@@ -86,6 +86,8 @@ const Gallery = () => {
       </div>
       </form>
 
+
+
       <div className="photos">
         {photos.map((photo) => (
           <img

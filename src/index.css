@@ -74,6 +74,9 @@ code {
   margin: 5rem 30px;
   gap: 10px;
 }
+
+
+
 }
 
 
@@ -133,11 +136,35 @@ path{
 /*API PEXELS*/
 .app .photos {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Limitar el número mínimo de columnas a 5 */
+  grid-template-columns: repeat(auto-fit, minmax(min(5, 100%), 1fr));  gap: 10px;
 }
 
 .app .photos img {
-  width: 100%;
+  width: auto;
   height: auto;
+  max-width: 100%;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+
+
+.gallery form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .gallery form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery form  {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
