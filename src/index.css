@@ -3,7 +3,12 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 code {
@@ -81,8 +86,8 @@ code {
 
 
 .contentpresent p , .textinicio{
-  font-size: 20px;
-  font-family: 'Open Sans', sans-serif;}
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;}
 
 .contentpresent img{
   border-radius: 16px;
