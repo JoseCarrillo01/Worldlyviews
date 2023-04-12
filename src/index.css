@@ -3,13 +3,18 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+  transition: scroll-behavior 0.5s ease-out;}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -47,6 +52,15 @@ code {
   object-fit: cover; /* para cubrir todo el espacio disponible sin perder la proporción */
 }
 
+.hover{
+  background: #008000ad;
+  padding: 10px 80px;
+}
+
+
+.hover:hover{
+  background: #008000 !important;
+}
 
 
 .gridname{
@@ -57,37 +71,102 @@ code {
   align-items:center;
 }
 
+.container{
+  display: grid;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
 
 .contentpresent{
   display: grid;
-  grid-template-columns: 30% 30%; 
-   max-width: 100%;
+  grid-template-columns: 30% 30%;
+  max-width: 1440px;
   text-align: center;
   justify-content: center;
   align-items: center;
   gap: 60px;
-  margin: 50px 10px;
+  margin: 0 auto;
   place-items: center;
-
 }
 
+.divtextContent{
+  width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 27px 17px;
+    margin: 0 auto;
+}
+
+.p1{
+  background-color:#ccd5ae ;
+}
+
+.p2{
+  background-color:#faedcd ;
+}
+
+
+.contentpresent div.movilimage{
+  display: none;
+}
 @media only screen and (max-width:768px) {
 
 
 .contentpresent , .textinicio{
   grid-template-columns: 1fr; 
-  margin: 5rem 30px;
+  margin: 5rem 0;
   gap: 10px;
 }
 
+.contentpresent .p1{
+  margin: 0 10px 0 0 !important;
+  border-radius: 0 16px 0 0;
+}
+
+.contentpresent .p2{
+  margin: 0 0 0 10px !important;
+  border-radius: 16px 0 0 0 ;
+}
+
+.container {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.contentpresent div.escritorioimg{
+  display: none;
+}
+
+.contentpresent div.movilimage{
+  display: inline;
+}
+
 
 
 }
 
+.textinicio{
+  margin: 80px 0;
+  padding: 50px 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
 
 .contentpresent p , .textinicio{
   font-size: 15px;
-  font-family: 'Montserrat', sans-serif;}
+  font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+
 
 .contentpresent img{
   border-radius: 16px;
@@ -142,7 +221,7 @@ path{
 .app .photos {
   display: grid;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   /* Limitar el número mínimo de columnas a 5 */
   grid-template-columns: repeat(auto-fit, minmax(min(5, 100%), 1fr));  gap: 10px;
 }
@@ -173,3 +252,52 @@ path{
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+
+
+/*MODAL IMAGEN AND AUTOR*/
+.modal {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.containermodal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 90%;
+  height: auto;
+  color: black;
+  font-size: 20px;
+  overflow: overlay;
+}
+
+.modal-buttons{
+  padding: 0 10px 20px 0;
+}
+
+.modal-buttons-grid .hover{
+  padding: 10px 30%;
+}
+
+.modal-buttons-grid  .h1R{
+  background-color: rgba(255, 0, 0, 0.644) !important;
+}
+
+.modal .containermodal img {
+  width: auto;
+  height: 70% !important;
+  padding: 20px;
+  }

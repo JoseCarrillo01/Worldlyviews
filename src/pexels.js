@@ -13,6 +13,43 @@ const Gallery = () => {
   const [randomPhotos, setRandomPhotos] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
   const [orientation, setOrientation] = useState('');
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      const res = await fetch(
+        "https://api.pexels.com/v1/search?query=nature&per_page=20&page=1",
+        {
+          headers: {
+            Authorization: "YOUR_PEXELS_API_KEY",
+          },
+        }
+      );
+      const data = await res.json();
+      setPhotos(data.photos);
+    };
+    fetchPhotos();
+  }, []);
+
+  const handlePhotoClick = (photo) => {
+    setSelectedPhoto(photo);
+  };
+
+  const handleCloseModal = (e) => {
+    if (e.target.classList.contains("modal")) {
+      setSelectedPhoto(null);
+    }
+  };
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.download = `${selectedPhoto.photographer}.jpg`;
+    link.href = selectedPhoto.src.original;
+    link.click();
+  };
+
+
 
   useEffect(() => {
     // Obtenemos 20 imágenes aleatorias de la API de Pexels
@@ -78,15 +115,13 @@ const Gallery = () => {
         <input type="text" name="query" placeholder="Search..." />
         <button type="submit">Search</button>
         <div className="filters">
-        <select value={orientation} onChange={handleOrientationChange}>
-          <option value="">Todas las Orientaciones</option>
-          <option value="landscape">Horizontal</option>
-          <option value="portrait">Vertical</option>
-        </select>
-      </div>
+          <select value={orientation} onChange={handleOrientationChange}>
+            <option value="">Todas las Orientaciones</option>
+            <option value="landscape">Horizontal</option>
+            <option value="portrait">Vertical</option>
+          </select>
+        </div>
       </form>
-
-
 
       <div className="photos">
         {photos.map((photo) => (
@@ -94,9 +129,36 @@ const Gallery = () => {
             key={photo.id}
             src={photo.src.medium}
             alt={photo.photographer}
+            onClick={() => handlePhotoClick(photo)}
           />
         ))}
+        {selectedPhoto && (
+          <div className="modal" onClick={handleCloseModal}>
+            <div className='containermodal'>
+              <img src={selectedPhoto.src.large} alt={selectedPhoto.photographer} />
+              
+              <div className="modal-buttons">
+              <p>Photo by {selectedPhoto.photographer}</p>
+              <div className="modal-buttons-grid">
+                <div class="mt-10 flex items-center justify-center gap-x-6">
+                  <a onClick={handleDownload}
+                    class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover">Download</a>
+                </div>
+                
+                <div class="mt-10 flex items-center justify-center gap-x-6">
+                  <a onClick={() => setSelectedPhoto(null)}
+                    class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover h1R">Close</a>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+
+
+
+
       {photos.length > 0 && (
         <ReactPaginate
           pageCount={Math.ceil(totalResults / perPage)}
@@ -108,9 +170,12 @@ const Gallery = () => {
           previousLabel="Previous"
           nextLabel="Next"
           disabledClassName="disabled"
+
         />
+
+
       )}
-   
+
 
     </div>
   );
