@@ -99,6 +99,8 @@ code {
     justify-content: center;
     padding: 27px 17px;
     margin: 0 auto;
+    border-radius: 18px;
+  
 }
 
 .p1{
@@ -220,17 +222,16 @@ path{
 /*API PEXELS*/
 .app .photos {
   display: grid;
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   /* Limitar el número mínimo de columnas a 5 */
   grid-template-columns: repeat(auto-fit, minmax(min(5, 100%), 1fr));  gap: 10px;
 }
 
 .app .photos img {
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: 100%;
   image-rendering: -webkit-optimize-contrast;
+  margin: 10px 0;
 }
 
 
@@ -246,17 +247,12 @@ path{
     grid-template-columns: repeat(2, 1fr);
   }
 
-  
-.containermodal {
-  width: 90% !important;
-}
-
  
 }
 
 @media screen and (max-width: 480px) {
   .gallery form  {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -286,17 +282,25 @@ path{
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  width: 45%;
+  width: 61%;
+    min-width: 570px;
   height: auto ;
   color: black;
   font-size: 20px;
   overflow: overlay;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+align-items: center;
+justify-content: center;
+border-radius: 20px;
 }
 
 .modal-buttons{
-  padding: 0 10px 20px 0;
+  padding:10px 0;
 }
-
+.modal-buttons-grid{
+  padding: 10px 0;
+}
 .modal-buttons-grid .hover{
   padding: 10px 30%;
 }
@@ -307,6 +311,69 @@ path{
 
 .modal .containermodal img {
   width: 100%;
-  height: 70% !important;
+  height: 100%;
   padding: 20px;
   }
+
+
+  
+@media screen and (max-width: 768px) {
+  .containermodal {
+    display: inline;
+  width: 65% !important;
+  max-width: 300px;
+    min-width: 250px;
+  position: fixed ;
+  top: 50% ;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  height: auto ;
+  color: black;
+  font-size: 20px;
+  overflow: overlay;
+}
+
+
+.modal .containermodal img {
+ 
+  width: 100%;
+  height: 70% !important;
+  padding: 20px;
+  max-height: 500px;
+    image-rendering: -webkit-optimize-contrast;
+    image-orientation: unset;
+}
+
+
+}
+
+
+
+.author-info{
+  display: flex;
+    gap: 10px;
+    padding: 0 9px;
+    align-items: center;
+    justify-content: center;
+}
+
+.author-initials {
+  background: #6c6c6c;
+  color: white;
+  border-radius: 59%;
+  padding: 6px;
+  font-size: 16px;
+}
+
+/*imagerandow*/
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: auto;
+}

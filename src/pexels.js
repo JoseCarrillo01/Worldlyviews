@@ -15,6 +15,12 @@ const Gallery = () => {
   const [orientation, setOrientation] = useState('');
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
+  function getInitials(name) {
+    const words = name.split(" ");
+    const initials = words.reduce((result, word) => result + word[0], "");
+    return initials.toUpperCase();
+  }
+  
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -122,23 +128,57 @@ const Gallery = () => {
           </select>
         </div>
       </form>
+      
+
+
+
+
 
       <div className="photos">
-        {photos.map((photo) => (
-          <img
-            key={photo.id}
-            src={photo.src.medium}
-            alt={photo.photographer}
-            onClick={() => handlePhotoClick(photo)}
-          />
-        ))}
+      <div className="photos1">
+    {photos.slice(0, photos.length / 3).map((photo) => (
+      <img
+        key={photo.id}
+        src={photo.src.medium}
+        alt={photo.photographer}
+        onClick={() => handlePhotoClick(photo)}
+      />
+    ))}
+  </div>
+  <div className="photos2">
+    {photos.slice(photos.length / 3, (photos.length / 3) * 2).map((photo) => (
+      <img
+        key={photo.id}
+        src={photo.src.medium}
+        alt={photo.photographer}
+        onClick={() => handlePhotoClick(photo)}
+      />
+    ))}
+  </div>
+  <div className="photos3">
+    {photos.slice((photos.length / 3) * 2, photos.length).map((photo) => (
+      <img
+        key={photo.id}
+        src={photo.src.medium}
+        alt={photo.photographer}
+        onClick={() => handlePhotoClick(photo)}
+      />
+    ))}
+  </div>
+
+       
         {selectedPhoto && (
           <div className="modal" onClick={handleCloseModal}>
             <div className='containermodal'>
-              <img src={selectedPhoto.src.large} alt={selectedPhoto.photographer} />
-              
               <div className="modal-buttons">
-              <p>Photo by {selectedPhoto.photographer}</p>
+              <img src={selectedPhoto.src.large} alt={selectedPhoto.photographer} />
+
+              <div className="author-info">
+    <div className="author-initials">{getInitials(selectedPhoto.photographer)}</div>
+    <p>Photo by {selectedPhoto.photographer}</p>
+  </div>        
+  
+        </div>
               <div className="modal-buttons-grid">
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                   <a onClick={handleDownload}
@@ -150,7 +190,7 @@ const Gallery = () => {
                     class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover h1R">Close</a>
                 </div>
                 </div>
-              </div>
+              
             </div>
           </div>
         )}
