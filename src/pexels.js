@@ -9,11 +9,12 @@ const Gallery = () => {
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
-  const [perPage, setPerPage] = useState(20);
+  const [perPage, setPerPage] = useState(50);
   const [randomPhotos, setRandomPhotos] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
   const [orientation, setOrientation] = useState('');
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [setSimilarPhotos, similarPhotos] =  useState([]);
 
   function getInitials(name) {
     const words = name.split(" ");
@@ -22,10 +23,27 @@ const Gallery = () => {
   }
   
 
+
+  const handlePhotoClick2 = async (photo) => {
+    setSelectedPhoto(photo);
+    try {
+      const response = await fetch(`https://api.pexels.com/v1/photos/${photo.id}/similar`, {
+        headers: {
+          Authorization: 'YOUR_API_KEY_HERE'
+        }
+      });
+      const data = await response.json();
+      setSimilarPhotos(data.photos);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+
   useEffect(() => {
     const fetchPhotos = async () => {
       const res = await fetch(
-        "https://api.pexels.com/v1/search?query=nature&per_page=20&page=1",
+        "https://api.pexels.com/v1/search?query=nature&per_page=60&page=1",
         {
           headers: {
             Authorization: "YOUR_PEXELS_API_KEY",
@@ -48,11 +66,26 @@ const Gallery = () => {
     }
   };
 
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.download = `${selectedPhoto.photographer}.jpg`;
-    link.href = selectedPhoto.src.original;
-    link.click();
+  const handleDownload = async () => {
+    if (!selectedPhoto) {
+      return;
+    }
+  
+    try {
+      const response = await fetch(selectedPhoto.src.original);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = `${selectedPhoto.photographer}.jpg`;
+      link.href = url;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
 
@@ -61,7 +94,7 @@ const Gallery = () => {
     // Obtenemos 20 imágenes aleatorias de la API de Pexels
     const fetchRandomPhotos = async () => {
       try {
-        const response = await axios.get(`${API_URL}/curated?per_page=20`, {
+        const response = await axios.get(`${API_URL}/curated?per_page=60`, {
           headers: {
             Authorization: API_KEY,
           },
@@ -177,8 +210,23 @@ const Gallery = () => {
     <div className="author-initials">{getInitials(selectedPhoto.photographer)}</div>
     <p>Photo by {selectedPhoto.photographer}</p>
   </div>        
-  
         </div>
+
+        
+
+
+        <div className="similar-photos">
+        {similarPhotos.map((photo) => (
+          <img
+            key={photo.id}
+            src={photo.src.medium}
+            alt={photo.photographer}
+            onClick={() => handlePhotoClick2(photo)}
+          />
+        ))}
+      </div>
+
+
               <div className="modal-buttons-grid">
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                   <a onClick={handleDownload}
