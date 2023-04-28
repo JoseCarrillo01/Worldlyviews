@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import Gallery from '../pexels';
 
 function Inicio() {
 
@@ -12,6 +12,8 @@ function Inicio() {
 
     return (
         <div className="App">
+
+
             <div onload="scrollTo(0,0);" class="colorback">
                 <div class="relative isolate px-6 pt-14 lg:px-8 contenheader">
                     <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
@@ -37,13 +39,16 @@ function Inicio() {
 
                                 </div>
                             </div>
-                           
+
+
+
 
 
 
                             <div class="mt-10 flex items-center justify-center gap-x-6">
                                 <a href="#contentInicio"
                                     onClick={handleClick} class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover">Conocenos</a>
+
 
 
                             </div>
@@ -107,7 +112,7 @@ function Inicio() {
 
             </div>
 
-         <h1 className="tittle">You can find a wide variety of images such as:</h1>
+            <h1 className="tittle">You can find a wide variety of images such as:</h1>
 
 
             <div class="contentPerson">
@@ -246,6 +251,7 @@ function Inicio() {
 
 
 
+                       
 
 
 

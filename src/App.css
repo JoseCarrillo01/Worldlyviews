@@ -37,6 +37,34 @@
   }
 }
 
+nav{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background-color: #00000094;
+    position: absolute;
+    width: 100%;
+  z-index: 9;
+  min-width: 320px;
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 10px 20px;
+}
+
+
+nav ul li a{
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
 .gallery {
   max-width: 1200px;
   margin: 0 auto;
@@ -147,4 +175,8 @@ button[type="submit"] {
 
 h1.mb-4.text-4xl.font-extrabold.leading-none.tracking-tight.text-gray-900.md\:text-5xl.lg\:text-6xl.dark\:text-white {
   color: black !important;
+}
+
+.appSecond form {
+  margin-top: 80px;
 }

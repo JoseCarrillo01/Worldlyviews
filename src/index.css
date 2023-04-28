@@ -9,6 +9,8 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  min-width: 320px;
+
 }
 
 html {
@@ -222,9 +224,10 @@ path{
 /*API PEXELS*/
 .app .photos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   /* Limitar el número mínimo de columnas a 5 */
-  grid-template-columns: repeat(auto-fit, minmax(min(5, 100%), 1fr));  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(min(5, 100%), 1fr));  
+  gap: 10px;
 }
 
 .app .photos img {
@@ -255,6 +258,14 @@ path{
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+@media screen and (max-width: 375px) {
+  .app .photos { 
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
 
 
 
