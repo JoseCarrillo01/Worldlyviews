@@ -9,8 +9,12 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+<<<<<<< HEAD
   min-width: 320px;
 
+=======
+  min-width: 375px;
+>>>>>>> d80c170b62c3b4bfc0bd1f176818787737ec04a0
 }
 
 html {
@@ -259,6 +263,11 @@ path{
   }
 }
 
+@media screen and (max-width: 375px) {
+.app .photos {
+grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+}
 
 @media screen and (max-width: 375px) {
   .app .photos { 
