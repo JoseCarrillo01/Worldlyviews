@@ -24,8 +24,7 @@ const Gallery = () => {
 
   useEffect(() => {
     const fetchPhotos = async () => {
-      const res = await fetch(
-        "https://api.pexels.com/v1/search?query=nature&per_page=20&page=1",
+      const res = await fetch("https://api.pexels.com/v1/search?query=nature&per_page=20&page=1",
         {
           headers: {
             Authorization: "YOUR_PEXELS_API_KEY",
@@ -47,14 +46,32 @@ const Gallery = () => {
       setSelectedPhoto(null);
     }
   };
-
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.download = `${selectedPhoto.photographer}.jpg`;
-    link.href = selectedPhoto.src.original;
-    link.click();
+  
+  
+  const handleDownload = async () => {
+    if (!selectedPhoto) {
+      return;
+    }
+  
+    try {
+      const response = await fetch(selectedPhoto.src.original);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = `${selectedPhoto.photographer}.jpg`;
+      link.href = url;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error(error);
+    }
   };
-
+  
+  
+  
 
 
   useEffect(() => {
@@ -118,7 +135,9 @@ const Gallery = () => {
   return (
     <div className="gallery">
       <form onSubmit={handleSearch}>
+      
         <input type="text" name="query" placeholder="Search..." />
+      
         <button type="submit">Search</button>
         <div className="filters">
           <select value={orientation} onChange={handleOrientationChange}>
