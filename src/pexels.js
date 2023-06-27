@@ -3,7 +3,7 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 
 const API_KEY = 'kGEJ1l8cw6BCrY6QE61jZW2r7GDe6QqiUYpC6nmWsSBD61kphI4KQYX5';
-const API_URL = `https://api.pexels.com/v1`;
+const API_URL = 'https://api.pexels.com/v1';
 
 const Gallery = () => {
   const [photos, setPhotos] = useState([]);
@@ -14,22 +14,20 @@ const Gallery = () => {
   const [totalResults, setTotalResults] = useState(0);
   const [orientation, setOrientation] = useState('');
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [setSimilarPhotos, similarPhotos] =  useState([]);
+  const [similarPhotos, setSimilarPhotos] = useState([]);
 
   function getInitials(name) {
     const words = name.split(" ");
     const initials = words.reduce((result, word) => result + word[0], "");
     return initials.toUpperCase();
   }
-  
-
 
   const handlePhotoClick2 = async (photo) => {
     setSelectedPhoto(photo);
     try {
-      const response = await fetch(`https://api.pexels.com/v1/photos/${photo.id}/similar`, {
+      const response = await fetch(`${API_URL}/photos/${photo.id}/similar`, {
         headers: {
-          Authorization: 'YOUR_API_KEY_HERE'
+          Authorization: API_KEY
         }
       });
       const data = await response.json();
@@ -38,24 +36,20 @@ const Gallery = () => {
       console.error(error);
     }
   };
-  
 
   useEffect(() => {
     const fetchPhotos = async () => {
-<<<<<<< HEAD
-      const res = await fetch("https://api.pexels.com/v1/search?query=nature&per_page=20&page=1",
-=======
-      const res = await fetch(
-        "https://api.pexels.com/v1/search?query=nature&per_page=60&page=1",
->>>>>>> d80c170b62c3b4bfc0bd1f176818787737ec04a0
-        {
+      try {
+        const res = await fetch(`${API_URL}/search?query=nature&per_page=20&page=1`, {
           headers: {
-            Authorization: "YOUR_PEXELS_API_KEY",
+            Authorization: API_KEY,
           },
-        }
-      );
-      const data = await res.json();
-      setPhotos(data.photos);
+        });
+        const data = await res.json();
+        setPhotos(data.photos);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchPhotos();
   }, []);
@@ -69,17 +63,12 @@ const Gallery = () => {
       setSelectedPhoto(null);
     }
   };
-<<<<<<< HEAD
-  
-  
-=======
 
->>>>>>> d80c170b62c3b4bfc0bd1f176818787737ec04a0
   const handleDownload = async () => {
     if (!selectedPhoto) {
       return;
     }
-  
+
     try {
       const response = await fetch(selectedPhoto.src.original);
       const blob = await response.blob();
@@ -96,13 +85,8 @@ const Gallery = () => {
       console.error(error);
     }
   };
-  
-  
-  
-
 
   useEffect(() => {
-    // Obtenemos 20 imágenes aleatorias de la API de Pexels
     const fetchRandomPhotos = async () => {
       try {
         const response = await axios.get(`${API_URL}/curated?per_page=60`, {
@@ -110,7 +94,6 @@ const Gallery = () => {
             Authorization: API_KEY,
           },
         });
-
         setRandomPhotos(response.data.photos);
       } catch (error) {
         console.error(error);
@@ -121,7 +104,6 @@ const Gallery = () => {
   }, []);
 
   useEffect(() => {
-    // Realizamos la búsqueda en la API de Pexels
     const fetchPhotos = async () => {
       try {
         let url = `${API_URL}/search?query=${query}&per_page=${perPage}&page=${page}`;
@@ -133,7 +115,6 @@ const Gallery = () => {
             Authorization: API_KEY,
           },
         });
-
         setPhotos(response.data.photos);
         setTotalResults(response.data.total_results);
       } catch (error) {
@@ -159,12 +140,11 @@ const Gallery = () => {
     setPage(1);
   };
 
+
   return (
     <div className="gallery">
       <form onSubmit={handleSearch}>
-      
         <input type="text" name="query" placeholder="Search..." />
-      
         <button type="submit">Search</button>
         <div className="filters">
           <select value={orientation} onChange={handleOrientationChange}>
@@ -174,91 +154,85 @@ const Gallery = () => {
           </select>
         </div>
       </form>
-      
-
-
-
-
 
       <div className="photos">
-      <div className="photos1">
-    {photos.slice(0, photos.length / 3).map((photo) => (
-      <img
-        key={photo.id}
-        src={photo.src.medium}
-        alt={photo.photographer}
-        onClick={() => handlePhotoClick(photo)}
-      />
-    ))}
-  </div>
-  <div className="photos2">
-    {photos.slice(photos.length / 3, (photos.length / 3) * 2).map((photo) => (
-      <img
-        key={photo.id}
-        src={photo.src.medium}
-        alt={photo.photographer}
-        onClick={() => handlePhotoClick(photo)}
-      />
-    ))}
-  </div>
-  <div className="photos3">
-    {photos.slice((photos.length / 3) * 2, photos.length).map((photo) => (
-      <img
-        key={photo.id}
-        src={photo.src.medium}
-        alt={photo.photographer}
-        onClick={() => handlePhotoClick(photo)}
-      />
-    ))}
-  </div>
+        <div className="photos1">
+          {photos.slice(0, photos.length / 3).map((photo) => (
+            <img
+              key={photo.id}
+              src={photo.src.medium}
+              alt={photo.photographer}
+              onClick={() => handlePhotoClick(photo)}
+            />
+          ))}
+        </div>
+        <div className="photos2">
+          {photos.slice(photos.length / 3, (photos.length / 3) * 2).map((photo) => (
+            <img
+              key={photo.id}
+              src={photo.src.medium}
+              alt={photo.photographer}
+              onClick={() => handlePhotoClick(photo)}
+            />
+          ))}
+        </div>
+        <div className="photos3">
+          {photos.slice((photos.length / 3) * 2, photos.length).map((photo) => (
+            <img
+              key={photo.id}
+              src={photo.src.medium}
+              alt={photo.photographer}
+              onClick={() => handlePhotoClick(photo)}
+            />
+          ))}
+        </div>
+      </div>
 
-       
-        {selectedPhoto && (
-          <div className="modal" onClick={handleCloseModal}>
-            <div className='containermodal'>
-              <div className="modal-buttons">
+      {selectedPhoto && (
+        <div className="modal" onClick={handleCloseModal}>
+          <div className='containermodal'>
+            <div className="modal-buttons">
               <img src={selectedPhoto.src.large} alt={selectedPhoto.photographer} />
 
               <div className="author-info">
-    <div className="author-initials">{getInitials(selectedPhoto.photographer)}</div>
-    <p>Photo by {selectedPhoto.photographer}</p>
-  </div>        
-        </div>
+                <div className="author-initials">{getInitials(selectedPhoto.photographer)}</div>
+                <p>Photo by {selectedPhoto.photographer}</p>
+              </div>
+            </div>
 
-        
+            <div className="similar-photos">
+              {similarPhotos.map((photo) => (
+                <img
+                  key={photo.id}
+                  src={photo.src.medium}
+                  alt={photo.photographer}
+                  onClick={() => handlePhotoClick2(photo)}
+                />
+              ))}
+            </div>
 
+            <div className="modal-buttons-grid">
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <a
+                  onClick={handleDownload}
+                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover"
+                >
+                  Download
+                </a>
+              </div>
 
-        <div className="similar-photos">
-        {similarPhotos.map((photo) => (
-          <img
-            key={photo.id}
-            src={photo.src.medium}
-            alt={photo.photographer}
-            onClick={() => handlePhotoClick2(photo)}
-          />
-        ))}
-      </div>
-
-
-              <div className="modal-buttons-grid">
-                <div class="mt-10 flex items-center justify-center gap-x-6">
-                  <a onClick={handleDownload}
-                    class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover">Download</a>
-                </div>
-                
-                <div class="mt-10 flex items-center justify-center gap-x-6">
-                  <a onClick={() => setSelectedPhoto(null)}
-                    class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover h1R">Close</a>
-                </div>
-                </div>
-              
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <a
+                  onClick={() => setSelectedPhoto(null)}
+                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover h1R"
+                >
+                  Close
+                </a>
+              </div>
             </div>
           </div>
-        )}
-      </div>
-
-
-
+        </div>
+      )}
 
       {photos.length > 0 && (
         <ReactPaginate
@@ -271,13 +245,8 @@ const Gallery = () => {
           previousLabel="Previous"
           nextLabel="Next"
           disabledClassName="disabled"
-
         />
-
-
       )}
-
-
     </div>
   );
 };

@@ -9,12 +9,8 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-<<<<<<< HEAD
   min-width: 320px;
 
-=======
-  min-width: 375px;
->>>>>>> d80c170b62c3b4bfc0bd1f176818787737ec04a0
 }
 
 html {

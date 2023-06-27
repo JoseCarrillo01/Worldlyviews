@@ -9,7 +9,15 @@ function Inicio() {
     const handleClick = () => {
         contentInicioRef.current.scrollIntoView({ behavior: "smooth" });
     };
+    
+    const [selectedCategory, setSelectedCategory] = useState('');
 
+    const handleCategoryClick = (category) => {
+      setSelectedCategory(category);
+      console.log(`Categoría seleccionada: ${category}`);
+    };
+  
+      
     return (
         <div className="App">
 
@@ -27,6 +35,17 @@ function Inicio() {
                             </defs>
                         </svg>
                     </div>
+
+
+
+
+
+
+
+
+
+
+
                     <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 headersize">
 
                         <div class="text-center">
@@ -66,7 +85,118 @@ function Inicio() {
                         </svg>
                     </div>
                 </div>
+            </div>---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            <div className="container">
+
+        <div className="pt-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Explora nuestras categorías</h2>
+            <p className="mt-4 text-lg text-gray-500">Encuentra imágenes de alta calidad para tus proyectos.</p>
+          </div>
+          <div className="mt-12 grid gap-5 row-gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div onClick={() => handleCategoryClick('naturaleza')} className="cursor-pointer pt-6">
+              <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-80">
+                <div className="-mt-6">
+                  <div>
+                    <span className="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                      <svg className="h-6 w-6 text-white" data-todo-x-description="Heroicon name: outline/cloud-upload" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 17l-4 4m0 0l-4-4m4 4V3"></path>
+                      </svg>
+                    </span>
+                  </div>
+                  <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Naturaleza</h3>
+                  <p className="mt-5 text-base text-gray-500">Encuentra imágenes impresionantes de la belleza natural.</p>
+                </div>
+              </div>
             </div>
+            <div onClick={() => handleCategoryClick('arquitectura')} className="cursor-pointer pt-6">
+              <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-80">
+                <div className="-mt-6">
+                  <div>
+                    <span className="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                      <svg className="h-6 w-6 text-white" data-todo-x-description="Heroicon name: outline/heart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318A6.96 6.96 0 0112 3a6.96 6.96 0 017.682 3.318c2.12 3.658-.358 8.024-3.682 10.683L12 21l-4-2.318C4.676 19.342 2.198 14.976 4.318 11.318z"></path>
+                      </svg>
+                    </span>
+                  </div>
+                  <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Arquitectura</h3>
+                  <p className="mt-5 text-base text-gray-500">Descubre imágenes impresionantes de la arquitectura moderna y antigua.</p>
+                </div>
+              </div>
+            </div>
+            <div onClick={() => handleCategoryClick('comida')} className="cursor-pointer pt-6">
+              <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-80">
+                <div className="-mt-6">
+                  <div>
+                    <span className="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                      <svg className="h-6 w-6 text-white" data-todo-x-description="Heroicon name: outline/scale" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l2.862 13.161A2 2 0 007.71 21H16.29a2 2 0 001.847-1.839L21 6m-9-2l-9 9h14l-9-9zm0 0v4"></path>
+                      </svg>
+                    </span>
+                  </div>
+                  <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Comida</h3>
+                  <p className="mt-5 text-base text-gray-500">Encuentra imágenes apetitosas de deliciosos platos de comida.</p>
+                </div>
+              </div>
+            </div>
+            <div onClick={() => handleCategoryClick('negocios')} className="cursor-pointer pt-6">
+              <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-80">
+                <div className="-mt-6">
+                  <div>
+                    <span className="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                      <svg className="h-6 w-6 text-white" data-todo-x-description="Heroicon name: outline/chart-bar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 20V10m0 0L8 14m4-4l4 4m6 0v2a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2h2m16 0H4a2 2 0 00-2 2v16a2 2 0 002 2h16a2 2 0 002-2v-2"></path>
+                      </svg>
+                    </span>
+                  </div>
+                  <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Negocios</h3>
+                  <p className="mt-5 text-base text-gray-500">Encuentra imágenes relacionadas con el mundo de los negocios y las finanzas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             <h1 ref={contentInicioRef} id="contentInicio" className="tittle">Worldly Views</h1>
@@ -115,9 +245,10 @@ function Inicio() {
             <h1 className="tittle">You can find a wide variety of images such as:</h1>
 
 
+
+
             <div class="contentPerson">
-
-
+            <a href='' >
 
                 <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 shadow-xl bg-white rounded-lg backgroundfondo">
                     <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">We have a wide variety of photos of people</h1>
@@ -155,11 +286,11 @@ function Inicio() {
 
                     </div>
                 </div>
-
+                </a>
             </div>
 
 
-
+          
             <div class="gridContentdouble">
 
 
@@ -213,51 +344,8 @@ function Inicio() {
 
 
 
-                <div class="contentcity item-2">
-                    <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 shadow-xl bg-white rounded-lg backgroundfondo">
-                        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Even images of landscapes our stock has a wide variety of photos without copyrights</h1>
+             
 
-                        <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 contentimage">
-                            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                                <img src="https://images.pexels.com/photos/2129796/pexels-photo-2129796.png?auto=compress&cs=tinysrgb&w=400
-          " alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75" />
-                            </div>
-
-
-
-
-                            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                                <img src="https://images.pexels.com/photos/2422588/pexels-photo-2422588.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75" />
-                            </div>
-
-
-                            <div class="gridname">
-
-                                <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                                    <img src="https://images.pexels.com/photos/1121782/pexels-photo-1121782.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75" />
-                                </div>
-
-
-                                <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                                    <img src="https://images.pexels.com/photos/1402790/pexels-photo-1402790.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75" />
-                                </div>
-
-                            </div>
-
-
-                            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                                <img src="https://images.pexels.com/photos/11511728/pexels-photo-11511728.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75" />
-                            </div>
-
-
-
-                       
-
-
-
-                        </div>
-                    </div>
-                </div>
 
             </div>
 
