@@ -17,13 +17,6 @@ html {
   scroll-behavior: smooth;
   transition: scroll-behavior 0.5s ease-out;}
 
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
 .mx-auto.max-w-2xl.py-32.sm\:py-48.lg\:py-56.headersize {
   padding: 80px 0;
 }
@@ -35,10 +28,10 @@ code {
 }
 
 .colorback{
-  background: url('https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background: url('https://images.pexels.com/photos/421129/pexels-photo-421129.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 65vh;
 
 }
 
@@ -55,13 +48,13 @@ code {
 }
 
 .hover{
-  background: #008000ad;
+  background: #853e95;
   padding: 10px 80px;
 }
 
 
 .hover:hover{
-  background: #008000 !important;
+  background: #802a94 !important;
 }
 
 
@@ -105,13 +98,12 @@ code {
   
 }
 
-.p1{
-  background-color:#ccd5ae ;
+.p1 , .p2{
+
+  background-color: #f9fafb;
+
 }
 
-.p2{
-  background-color:#faedcd ;
-}
 
 
 .contentpresent div.movilimage{
@@ -163,18 +155,15 @@ code {
   border-radius: 20px;
 }
 
-.contentpresent p , .textinicio{
-  font-size: 15px;
-  font-family: 'Raleway', sans-serif;
-    font-weight: 500;
-    letter-spacing: 1px;
+
+.contentpresent{
+  padding: 23px;
+
 }
-
-
-
 .contentpresent img{
-  border-radius: 16px;
+  border-radius: 16px !important;
   width: 30rem;
+
 }
 
 
@@ -182,12 +171,11 @@ code {
 
   margin: 52px 81px;
 place-items: center;
-font-size: 60px;
+font-size: 60px !important;
 display: flex;
 align-items: center;
 justify-content: left;
-font-family: 'Koulen', cursive;
-color: #797979;
+color: #000000;
 
 }
 
@@ -216,7 +204,7 @@ header img {
 
 
 path{
-  fill: rgb(0, 255, 21);
+  fill: rgb(255, 255, 255);
 }
 
 
@@ -249,14 +237,30 @@ path{
   .gallery form {
     grid-template-columns: repeat(2, 1fr);
   }
+  .colorback{
+ 
+    height: 75vh;
+  
+  }
+  
 
  
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 425px) {
   .gallery form  {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .tittle {
+
+    font-size: 45px !important;
+  }
+
+  .disableds{
+
+  }
+
 }
 
 @media screen and (max-width: 375px) {
@@ -392,4 +396,27 @@ border-radius: 20px;
 .photo-grid img {
   width: 100%;
   height: auto;
+}
+
+
+/*twilling styles*/
+.shadow-lg {
+  background: #853e95;
+}
+
+.md\:justify-between {
+  background: #853e95;
+  justify-content: space-between;
+  color: white;
+  border-radius: 15px;
+}
+
+.sm\:text-center {
+  text-align: center;
+  color: white;
+}
+
+.sm\:mt-0 {
+  margin-top: 0px;
+  color: white;
 }

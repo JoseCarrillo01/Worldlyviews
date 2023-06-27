@@ -40,7 +40,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const res = await fetch(`${API_URL}/search?query=nature&per_page=20&page=1`, {
+        const res = await fetch(`${API_URL}/search?query=nature&per_page=60&page=1`, {
           headers: {
             Authorization: API_KEY,
           },

@@ -44,7 +44,7 @@ nav{
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: #00000094;
+  background-color: #00000054;
     position: absolute;
     width: 100%;
   z-index: 9;
@@ -63,7 +63,13 @@ nav ul li {
 nav ul li a{
   padding: 10px 20px;
   cursor: pointer;
+  font-weight: 500;
+  /* gap: 10px; */
+   margin: 0 10px; 
+   border-radius: 5px;
+   /* display: grid; */
 }
+
 
 .gallery {
   max-width: 1200px;
@@ -90,7 +96,8 @@ form input[type="text"] {
 }
 
 button[type="submit"] {
-  background-color: #3498db;
+  background: #853e95ab;
+  font-weight: 500;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -148,6 +155,12 @@ button[type="submit"] {
   .photos {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  nav ul li a{
+     margin: 0; 
+  }
+  
+  
 }
 
 @media screen and (max-width: 480px) {
