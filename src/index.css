@@ -31,7 +31,7 @@ html {
   background: url('https://images.pexels.com/photos/421129/pexels-photo-421129.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 65vh;
+  min-height: 65vh;
 
 }
 
@@ -239,7 +239,7 @@ path{
   }
   .colorback{
  
-    height: 75vh;
+    height: 80vh;
   
   }
   
@@ -257,9 +257,7 @@ path{
     font-size: 45px !important;
   }
 
-  .disableds{
 
-  }
 
 }
 
@@ -419,4 +417,13 @@ border-radius: 20px;
 .sm\:mt-0 {
   margin-top: 0px;
   color: white;
+}
+
+footer a{
+  color: white !important;
+}
+
+
+footer div ul li a{
+  color: white !important;
 }
